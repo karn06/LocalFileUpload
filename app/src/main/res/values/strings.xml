@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Upload Documents</string>
+    <string name="you_need_to_provide_location_and_camera_permissions_to_use_the_app" />
+</resources>

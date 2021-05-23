@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.uploaddocuments.AttachmentListAdapter" />
+
+        <variable
+            name="listener"
+            type="com.example.uploaddocuments.AttachmentListAdapter.AttachmentListener" />
+
+        <variable
+            name="imageLoadingCallback"
+            type="com.squareup.picasso.Callback" />
+
+        <variable
+            name="url"
+            type="String" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/leadCard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <uk.co.senab.photoview.PhotoView
+                android:id="@+id/attachment"
+                callBack="@{imageLoadingCallback}"
+                imageUrl="@{url}"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true" />
+
+            <ImageView
+                android:id="@+id/attachmentLocalImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_centerVertical="true"/>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                tools:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/could_not_load"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                tools:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/close_view_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"
+                android:visibility="gone" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/deleteAttachmentButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:cornerRadius="0dp"
+                android:onClick="@{() -> listener.onDeleteClick(url)}"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
